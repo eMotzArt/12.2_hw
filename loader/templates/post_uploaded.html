@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Пост добавлен</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 <main>
 
-    <a href="index.html" class="link">Назад</a>
+    <a href="{{ url_for('main_blueprint.main_page') }}" class="link">Назад</a>
 
     <h1>Пост добавлен! </h1>
 

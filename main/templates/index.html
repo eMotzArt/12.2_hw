@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
-    <link rel="stylesheet" href="../../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
 
     <hr>
 
-    <a href="post_form.html" class="button">Добавить пост</a>
+    <a href="{{ url_for('loader_blueprint.main_page') }}" class="button">Добавить пост</a>
 
 </main>
 </body>

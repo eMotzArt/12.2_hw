@@ -1,6 +1,5 @@
 import json
 from datetime import datetime
-
 import flask
 
 def formate_post(request_data: flask.Request):
@@ -35,4 +34,3 @@ def append_post_to_db(post, file_name):
         json.dump(all_posts, data_base, ensure_ascii=False, indent=4)
 
     return True
-

@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request
-from loader.functions import formate_post, append_post_to_db
+from loader.functions import formate_post, append_post_to_db, get_last_post
 
 loader_blueprint = Blueprint('loader_blueprint', __name__, template_folder='./templates', static_folder='/static')
 
@@ -17,5 +17,4 @@ def load():
 
     if not result:
         return "Ошибка загрузки"
-
-
+    return render_template('post_uploaded.html', post=formated_post)

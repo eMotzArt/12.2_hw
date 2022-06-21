@@ -28,6 +28,8 @@ class DataBase:
         return file_content
 
     def search_str_in_db_data(self, search_line):
+        logging.info(f'Был произведен поиск. Запрос: - {search_line}')
+
         to_return = []
         for item in self.db_data:
             if search_line.lower() in item['content'].lower():

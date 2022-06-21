@@ -3,6 +3,7 @@ import os.path
 from datetime import datetime
 import flask
 from globals import UPLOAD_FOLDER
+import logging
 
 class EmptyPostError(Exception):
     pass
@@ -50,9 +51,11 @@ class NewPostFromRequestData:
 
     def validate_post(self):
         if self.extension not in ['jpeg', 'png']:
+            logging.info(f'Была произведена попытка загрузить файл с расширением {self.extension}')
             raise TypeError("Error: only .jpeg and .png are available.")
 
         if len(self.content) == 0:
+            logging.info(f'Была произведена попытка загрузить файл с пустым комментарием')
             raise EmptyPostError('Error: no empty posts is available.')
 
 
@@ -75,6 +78,7 @@ class NewPostFromRequestData:
         try:
             self.picture.save(self.pic_full_path)
         except BaseException as e:
+            logging.error(f"Ошибка при загрузке файла")
             raise e
 
 

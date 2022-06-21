@@ -1,3 +1,5 @@
+import logging
+
 from flask import render_template, Blueprint, request, abort
 from classes import DataBase
 from globals import POSTS_FILE
@@ -12,6 +14,7 @@ def main_page():
 @main_blueprint.route('/search')
 def search_page():
     search_line = request.args['s']
+    logging.info(f'Был произведен поиск. Запрос: - {search_line}')
     try:
         db = DataBase(POSTS_FILE)
     except BaseException as e:

@@ -1,5 +1,6 @@
-from flask import render_template, Blueprint, request
-from main.functions import get_all_posts, search_post_by_str
+from flask import render_template, Blueprint, request, abort
+from classes import DataBase
+from globals import POSTS_FILE
 
 main_blueprint = Blueprint('main_blueprint', __name__, template_folder='./templates', static_folder='/static')
 
@@ -11,10 +12,11 @@ def main_page():
 @main_blueprint.route('/search')
 def search_page():
     search_line = request.args['s']
-    all_posts = get_all_posts('posts.json')
+    try:
+        db = DataBase(POSTS_FILE)
+    except BaseException as e:
+        return f'Ошибка: "{e}"'
 
-    if not all_posts:
-        return "Ошибка считывания"
+    search_result = db.search_str_in_db_data(search_line)
 
-    sorted_posts = search_post_by_str(search_line, all_posts)
-    return render_template('searched_posts.html', search_line=search_line, posts=sorted_posts)
+    return render_template('searched_posts.html', search_line=search_line, posts=search_result)

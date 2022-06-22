@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, request, abort
+from flask import render_template, Blueprint, request
 from classes import DataBase
 from globals import POSTS_FILE
 

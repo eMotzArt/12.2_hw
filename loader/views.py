@@ -9,7 +9,7 @@ def main_page():
     return render_template('post_form.html')
 
 
-@loader_blueprint.route('/load', methods=["POST"])
+@loader_blueprint.route('/', methods=["POST"])
 def load():
     try:
         new_post = NewPostFromRequestData(request)

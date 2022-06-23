@@ -82,7 +82,9 @@ class NewPostFromRequestData:
     def get_info_to_export(self):
         """возвращает подходящий для экспорта словарь"""
         info_to_export = {
-            'pic': self.pic_full_path,
+
+            'pic': '\\' + self.pic_full_path,
+            # 'pic': self.pic_full_path,
             'content': self.content
         }
 

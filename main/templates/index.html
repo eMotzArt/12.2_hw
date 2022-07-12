@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
 <main>
 
-    <h1>Поиск постов</h1>
+    <h1>Поиск постов!</h1>
 
-    <form action="post_by_tag.html" method="get">
+    <form action="{{ url_for('main_blueprint.search_page') }}" method="get">
         <p>По вхождению слова</p>
         <input type="text" name="s">
         <input type="submit" value="Найти" class="button">
@@ -19,7 +19,7 @@
 
     <hr>
 
-    <a href="post_form.html" class="button">Добавить пост</a>
+    <a href="{{ url_for('loader_blueprint.main_page') }}" class="button">Добавить пост</a>
 
 </main>
 </body>
